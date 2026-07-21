@@ -1,9 +1,14 @@
 // ===================================================
 // CONFIGURAÇÃO DA API
-// Quando o frontend for servido pelo FastAPI (Dia 3), a API está
-// no mesmo servidor — usamos uma URL relativa ou o endereço completo.
+// Quando o frontend for servido pelo FastAPI, a API está no mesmo servidor — usamos uma URL relativa ou o endereço completo.
 // ===================================================
-const API_BASE_URL = "http://localhost:8000";
+
+// Pega o valor do hostname da URL atual (se está abrindo o site loalmente ou remotamente/web)
+const urlHostname = window.location.hostname;
+
+// O servidor poderá ser aberto tanto localmente para testes quanto remotamente com o site no ar
+const API_BASE_URL = urlHostname === "localhost" || urlHostname === "127.0.0.1" ? "http://localhost:8000" : "https://alura-caioalbum.onrender.com"; 
+
 
 // ===================================================
 // FUNÇÃO: Preenche os slots do álbum com imagens da API
